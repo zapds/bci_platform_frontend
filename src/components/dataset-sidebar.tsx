@@ -31,7 +31,7 @@ function formatBytes(bytes: number): string {
 }
 
 export function DatasetSidebar() {
-  const { setArtifactId, currentArtifactId, reset } = usePreprocessing();
+  const { setArtifactId, currentArtifactId, reset, registerRefreshCallback } = usePreprocessing();
   const [datasets, setDatasets] = useState<Dataset[]>([]);
   const [loading, setLoading] = useState(true);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
@@ -56,6 +56,11 @@ export function DatasetSidebar() {
   useEffect(() => {
     fetchDatasets();
   }, []);
+
+  // Register the refresh callback
+  useEffect(() => {
+    registerRefreshCallback(fetchDatasets);
+  }, [registerRefreshCallback]);
 
   const handleDelete = async (id: string, e: React.MouseEvent) => {
     e.stopPropagation();

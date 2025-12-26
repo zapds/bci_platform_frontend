@@ -124,11 +124,14 @@ export default function MetadataPage() {
           <CardTitle className="text-lg text-muted-foreground">Next Step</CardTitle>
         </CardHeader>
         <CardContent>
-          <Button variant="outline" disabled>
-            Continue to Filter →
+          <Button 
+            variant="outline" 
+            onClick={() => router.push("/preprocessing/channels")}
+          >
+            Continue to Channels →
           </Button>
           <p className="text-xs text-muted-foreground mt-2">
-            Filter operations coming soon
+            Select which channels to include in the analysis
           </p>
         </CardContent>
       </Card>

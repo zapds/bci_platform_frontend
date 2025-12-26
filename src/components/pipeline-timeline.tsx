@@ -11,6 +11,8 @@ interface PipelineTimelineProps {
 const STAGES = [
   { id: "upload", label: "Upload", path: "/preprocessing" },
   { id: "metadata", label: "Metadata", path: "/preprocessing/metadata" },
+  { id: "channels", label: "Channels", path: "/preprocessing/channels" },
+  { id: "montage", label: "Montage", path: "/preprocessing/montage" },
   { id: "filter", label: "Filter", path: "/preprocessing/filter" },
 ];
 
@@ -35,7 +37,6 @@ export function PipelineTimeline({ history }: PipelineTimelineProps) {
         {STAGES.map((stage, index) => {
           const { completed, current } = getStageStatus(stage.id);
           const artifactId = getStepArtifact(stage.id);
-          const isClickable = completed || current;
 
           return (
             <div key={stage.id} className="relative">
@@ -77,20 +78,18 @@ export function PipelineTimeline({ history }: PipelineTimelineProps) {
 
                 {/* Label and artifact */}
                 <div className="flex-1 min-w-0">
-                  {isClickable ? (
-                    <Link
-                      href={stage.path}
-                      className={`text-sm block ${
-                        current ? "font-medium" : "text-muted-foreground hover:text-foreground"
-                      }`}
-                    >
-                      {stage.label}
-                    </Link>
-                  ) : (
-                    <span className="text-sm text-muted-foreground">
-                      {stage.label}
-                    </span>
-                  )}
+                  <Link
+                    href={stage.path}
+                    className={`text-sm block ${
+                      current
+                        ? "font-medium"
+                        : completed
+                        ? "text-muted-foreground hover:text-foreground"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    {stage.label}
+                  </Link>
                   {artifactId && (
                     <span className="text-xs text-muted-foreground font-mono block truncate">
                       {artifactId.slice(0, 8)}...
