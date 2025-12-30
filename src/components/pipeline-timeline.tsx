@@ -13,6 +13,7 @@ const STAGES = [
   { id: "metadata", label: "Metadata", path: "/preprocessing/metadata" },
   { id: "channels", label: "Channels", path: "/preprocessing/channels" },
   { id: "montage", label: "Montage", path: "/preprocessing/montage" },
+  { id: "annotations", label: "Annotations", path: "/preprocessing/annotations" },
   { id: "filter", label: "Filter", path: "/preprocessing/filter" },
 ];
 

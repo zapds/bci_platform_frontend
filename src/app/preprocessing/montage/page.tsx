@@ -131,11 +131,14 @@ export default function MontagePage() {
           <CardTitle className="text-lg text-muted-foreground">Next Step</CardTitle>
         </CardHeader>
         <CardContent>
-          <Button variant="outline" disabled>
-            Continue to Filter →
+          <Button 
+            variant="outline" 
+            onClick={() => router.push("/preprocessing/annotations")}
+          >
+            Continue to Annotations →
           </Button>
           <p className="text-xs text-muted-foreground mt-2">
-            Filter operations coming soon
+            Add event annotations to your dataset
           </p>
         </CardContent>
       </Card>
