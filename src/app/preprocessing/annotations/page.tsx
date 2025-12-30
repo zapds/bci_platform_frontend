@@ -342,11 +342,14 @@ export default function AnnotationsPage() {
           <CardTitle className="text-lg text-muted-foreground">Next Step</CardTitle>
         </CardHeader>
         <CardContent>
-          <Button variant="outline" disabled>
+          <Button 
+            variant="outline" 
+            onClick={() => router.push("/preprocessing/filter")}
+          >
             Continue to Filter →
           </Button>
           <p className="text-xs text-muted-foreground mt-2">
-            Filter operations coming soon
+            Apply frequency filters to your dataset
           </p>
         </CardContent>
       </Card>
