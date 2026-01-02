@@ -15,6 +15,7 @@ const STAGES = [
   { id: "montage", label: "Montage", path: "/preprocessing/montage" },
   { id: "annotations", label: "Annotations", path: "/preprocessing/annotations" },
   { id: "filter", label: "Filter", path: "/preprocessing/filter" },
+  { id: "epochs", label: "Epochs", path: "/preprocessing/epochs" },
 ];
 
 export function PipelineTimeline({ history }: PipelineTimelineProps) {
